@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using UnityEngine.UI;
 //code für Movement war von YouTube https://www.youtube.com/watch?v=1uW-GbHrtQc 
 [RequireComponent(typeof(CharacterController))]
 public class PlayerMovement : MonoBehaviour
@@ -41,6 +42,8 @@ public class PlayerMovement : MonoBehaviour
     {
         move();
         detectObject();
+
+        
         
     }
 
@@ -93,17 +96,20 @@ public class PlayerMovement : MonoBehaviour
         }
 }
     
-    //"laser" der Objekte wahrnimmt 
+    //"laser" der Objekte wahrnimmt
     public void detectObject(){
+        
+
         
         Ray ray= new Ray(playerCamera.transform.position, playerCamera.transform.forward);
         Debug.DrawRay(ray.origin, ray.direction * distance);
         RaycastHit hitInfo; //variable die Kollision speichert
-        if (Physics.Raycast(ray, out hitInfo, distance, mask)){
-           /* if(hitInfo.collider.GetComponent<Interactable>() != null){
-                Debug.Log(hitInfo.collider.GetComponent<Interactable>().promptMessage);
-            }*/
+        if(Input.GetMouseButtonDown(0)){
+            if (Physics.Raycast(ray, out hitInfo, distance, mask)){
+                
+                Debug.Log("Getroffenes Objekt: " + hitInfo.collider.gameObject.name);
+                
+            }
         }
     }
-
 }
