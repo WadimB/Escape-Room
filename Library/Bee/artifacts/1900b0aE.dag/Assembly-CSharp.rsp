@@ -357,6 +357,7 @@
 -analyzer:"D:/Unity Game Engine/2022.3.17f1/Editor/Data/Tools/Unity.SourceGenerators/Unity.Properties.SourceGenerator.dll"
 -analyzer:"D:/Unity Game Engine/2022.3.17f1/Editor/Data/Tools/Unity.SourceGenerators/Unity.SourceGenerators.dll"
 "Assets/Scripts/DisableCollider.cs"
+"Assets/Scripts/Door.cs"
 "Assets/Scripts/Input_area.cs"
 "Assets/Scripts/PlayerMovement.cs"
 -langversion:9.0

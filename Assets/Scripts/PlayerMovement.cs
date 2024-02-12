@@ -34,17 +34,13 @@ public class PlayerMovement : MonoBehaviour
     {
         characterController = GetComponent<CharacterController>();
         Cursor.lockState = CursorLockMode.Locked;
-        Cursor.visible = false;
-        
+        Cursor.visible = true;
     }
 
     void Update()
     {
         move();
-        detectObject();
-
-        
-        
+        detectObject();        
     }
 
     public void move(){
@@ -98,9 +94,7 @@ public class PlayerMovement : MonoBehaviour
     
     //"laser" der Objekte wahrnimmt
     public void detectObject(){
-        
-
-        
+                
         Ray ray= new Ray(playerCamera.transform.position, playerCamera.transform.forward);
         Debug.DrawRay(ray.origin, ray.direction * distance);
         RaycastHit hitInfo; //variable die Kollision speichert
@@ -108,7 +102,11 @@ public class PlayerMovement : MonoBehaviour
             if (Physics.Raycast(ray, out hitInfo, distance, mask)){
                 
                 Debug.Log("Getroffenes Objekt: " + hitInfo.collider.gameObject.name);
-                
+
+                Button button = hitInfo.collider.GetComponent<Button>();
+                if(button != null){
+                    button.onClick.Invoke();
+                }
             }
         }
     }

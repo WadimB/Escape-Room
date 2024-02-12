@@ -4,14 +4,13 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 
-// https://www.youtube.com/watch?v=TO0g5jyjpYU
 
 public class Input_area : MonoBehaviour
 {
     [SerializeField] 
-    private TMP_Text Answer;
+    public TMP_Text Answer;
     public int maxCharacterLimit = 6;
-    public string pin = "298219";
+    public string pin = "5";
     
     [SerializeField] 
     private Animator animation;
@@ -30,7 +29,7 @@ public class Input_area : MonoBehaviour
         }
     }
 
-    public void Bestätigen(){
+    public void Confirm(){
         if(Answer.text == pin){
             Answer.text = "Richtig!";
             animation.SetBool("isOpen", true);
@@ -38,11 +37,11 @@ public class Input_area : MonoBehaviour
         else
         {
             Answer.text = "Falsch!";
+            StartCoroutine(ResetAnswerText());
         }
     }
-    public void Check(){
-        Debug.Log("Check");
-    }
-
-    
+    IEnumerator ResetAnswerText(){
+        yield return new WaitForSeconds(2f);
+        Answer.text = "";
+    }    
 }
