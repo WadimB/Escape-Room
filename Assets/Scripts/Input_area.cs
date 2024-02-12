@@ -10,7 +10,7 @@ public class Input_area : MonoBehaviour
     [SerializeField] 
     public TMP_Text Answer;
     public int maxCharacterLimit = 6;
-    public string pin = "5";
+    public string pin = "254167";
     
     [SerializeField] 
     private Animator animation;
